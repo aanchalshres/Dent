@@ -272,10 +272,15 @@
           return;
         }
 
+        // Only show update button if user is admin
+        if (user.role === "admin") {
+          actionButtons += `<button class="btn btn-info btn-sm ms-1" onclick="openUpdateModal('${product._id}')">Update</button>`;
+        }
+
         products.forEach((product) => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-                <td><img src="http://localhost:5000/${product.image}" alt="${
+                <td><img src="http://localhost:3000/${product.image}" alt="${
             product.name
           }"></td>
                 <td>${product.name}</td>
@@ -285,9 +290,6 @@
                   <button class="btn btn-warning btn-sm" onclick="addToCart('${
                     product._id
                   }')">Add To Cart</button>
-                  <button class="btn btn-info btn-sm ms-1" onclick="openUpdateModal('${
-                    product._id
-                  }')">Update</button>
                   ${
                     cart.find((item) => item._id === product._id)
                       ? '<span class="text-success fw-bold ms-2">In Cart</span>'
@@ -312,7 +314,7 @@
         products.forEach((product) => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-              <td><img src="http://localhost:5000/${product.image}" alt="${
+              <td><img src="http://localhost:3000/${product.image}" alt="${
             product.name
           }"></td>
               <td>${product.name}</td>
@@ -381,7 +383,7 @@
           div.className = "cart-item";
           div.innerHTML = `
                 <div class="d-flex align-items-center">
-                  <img src="http://localhost:5000/${item.image}" alt="${item.name}">
+                  <img src="http://localhost:3000/${item.image}" alt="${item.name}">
                   <div>
                     <h5 style="margin:0;">${item.name}</h5>
                     <p style="margin:0;">रु${item.price} x ${item.quantity}</p>

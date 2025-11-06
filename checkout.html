@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Checkout</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -69,37 +70,39 @@
         actionDiv.innerHTML = `<button onclick="pay(${totalAmount}, '${user._id}')">Pay with eSewa</button>`;
       }
 
-      // eSewa Payment
+      function generateEsewaSignature(secretKey, message) {
+        const hash = CryptoJS.HmacSHA256(message, secretKey);
+        return CryptoJS.enc.Base64.stringify(hash);
+      }
+
       function pay(amount, userId) {
+        const totalAmount = amount + 10; // e.g. include tax
+        const taxAmount = 10;
+        const transaction_uuid = `${Date.now()}-${userId}`;
+        const product_code = "EPAYTEST";
+        const secretKey = "8gBm/:&EnhH.1/q";
+
+        // Message format must match signed_field_names
+        const message = `total_amount=${totalAmount},transaction_uuid=${transaction_uuid},product_code=${product_code}`;
+        const signature = generateEsewaSignature(secretKey, message);
+        const productIds = cart.map((item) => item._id).join(",");
+
         const form = document.createElement("form");
         form.method = "POST";
-        form.action = "https://rc-epay.esewa.com.np/api/epay/main/v2/form"; // sandbox/test URL
-        form.target = "_self";
-
-        // form.innerHTML = `
-        //   <input name="tAmt" value="${amount}" />
-        //   <input name="amt" value="${amount}" />
-        //   <input name="txAmt" value="0" />
-        //   <input name="psc" value="0" />
-        //   <input name="pdc" value="0" />
-        //   <input name="scd" value="EPAYTEST" />
-        //   <input name="pid" value="${userId}" />
-        //   <input name="su" value="http://localhost:3000/payment-success.html" />
-        //   <input name="fu" value="http://localhost:3000/payment-fail.html" />
-        // `;
+        form.action = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
 
         form.innerHTML = `
-          <input type="text" id="amount" name="amount" value=${amount} required>
-          <input type="text" id="tax_amount" name="tax_amount" value ="10" required>
-          <input type="text" id="total_amount" name="total_amount" value=${
-            amount + 10
-          } required>
-          <input type="text" id="transaction_uuid" name=${userId} value="241028" required>
-          <input type="text" id="product_code" name="product_code" value ="EPAYTEST" required>
-          <input type="text" id="product_service_charge" name="product_service_charge" value="0" required>
-          <input type="text" id="product_delivery_charge" name="product_delivery_charge" value="0" required>
-          <input type="text" id="success_url" name="success_url" value="https://developer.esewa.com.np/success" required>
-          <input type="text" id="failure_url" name="failure_url" value="https://developer.esewa.com.np/failure" required>
+          <input type="hidden" name="amount" value="${amount}">
+          <input type="hidden" name="tax_amount" value="${taxAmount}">
+          <input type="hidden" name="total_amount" value="${totalAmount}">
+          <input type="hidden" name="transaction_uuid" value="${transaction_uuid}">
+          <input type="hidden" name="product_code" value="${product_code}">
+          <input type="hidden" name="product_service_charge" value="0">
+          <input type="hidden" name="product_delivery_charge" value="0">
+          <input type="hidden" name="success_url" value="http://localhost:3000/api/payment/success?transaction_uuid=${transaction_uuid}&userId=${userId}&total_amount=${totalAmount}&product_ids=${productIds}">
+          <input type="hidden" name="failure_url" value="http://localhost:5000/api/payment/failure">
+          <input type="hidden" name="signed_field_names" value="total_amount,transaction_uuid,product_code">
+          <input type="hidden" name="signature" value="${signature}">
         `;
 
         document.body.appendChild(form);
