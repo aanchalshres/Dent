@@ -1,224 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paragliding in Pokhara - Heritage Portal</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      overflow-y: auto; /* enable scrolling */
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paragliding in Pokhara - Heritage Portal</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        overflow-y: auto; /* enable scrolling */
+      }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    main {
-      flex: 1;
-    }
-
-    /* Paragliding Section */
-    #paragliding {
-      padding: 40px;
-      background-color: #e6f7ff;
-    }
-
-    #paragliding h2 {
-      text-align: center;
-      color: #005580;
-      margin-bottom: 30px;
-    }
-
-    #paragliding .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    /* Image box */
-    #paragliding .image-box {
-      flex: 1 1 300px;
-      text-align: center;
-    }
-
-    #paragliding .image-box img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    #paragliding .image-box p {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #005580;
-    }
-
-    /* Text content */
-    #paragliding .text-box {
-      flex: 2 1 400px;
-    }
-
-    #paragliding .text-box p {
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
-    #paraglidingFactButton {
-      padding: 10px 20px;
-      background-color: #005580;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #paraglidingFactButton:hover {
-      background-color: #0077aa;
-    }
-
-    #paraglidingFunFact {
-      margin-top: 15px;
-      font-style: italic;
-      color: #333;
-      background-color: #f0f8ff;
-      padding: 10px;
-      border-left: 4px solid #005580;
-      border-radius: 4px;
-    }
-
-    /* Footer */
-    .footer {
-      background: #ADD8E6;
-      color: black;
-      padding: 20px 50px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 15px 0;
-      padding: 0;
-      flex-wrap: wrap;
-    }
-
-    .footer-links li a {
-      color: black;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .footer-social a img {
-      width: 25px;
-      margin: 0 8px;
-    }
-
-    .footer-content p {
-      font-size: 14px;
-      margin: 0;
-    }
-
-    @media (max-width: 768px) {
-      #paragliding .container {
+      body {
+        display: flex;
         flex-direction: column;
-        align-items: center;
+        min-height: 100vh;
       }
 
-      #paragliding .text-box, 
+      main {
+        flex: 1;
+      }
+
+      /* Paragliding Section */
+      #paragliding {
+        padding: 40px;
+        background-color: #e6f7ff;
+      }
+
+      #paragliding h2 {
+        text-align: center;
+        color: #005580;
+        margin-bottom: 30px;
+      }
+
+      #paragliding .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      /* Image box */
       #paragliding .image-box {
-        flex: 1 1 100%;
+        flex: 1 1 300px;
+        text-align: center;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <main>
-    <!-- Paragliding Section -->
-    <section id="paragliding">
-      <h2>Paragliding in Pokhara: Adventure in the Sky</h2>
-      
-      <div class="container">
-        <!-- Image with Caption -->
-        <div class="image-box">
-          <img src="img/paragliding-in-nepal.webp" alt="Paragliding in Pokhara">
-          <p>Paragliding over Pokhara Valley</p>
+      #paragliding .image-box img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      #paragliding .image-box p {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #005580;
+      }
+
+      /* Text content */
+      #paragliding .text-box {
+        flex: 2 1 400px;
+      }
+
+      #paragliding .text-box p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      #paraglidingFactButton {
+        padding: 10px 20px;
+        background-color: #005580;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #paraglidingFactButton:hover {
+        background-color: #0077aa;
+      }
+
+      #paraglidingFunFact {
+        margin-top: 15px;
+        font-style: italic;
+        color: #333;
+        background-color: #f0f8ff;
+        padding: 10px;
+        border-left: 4px solid #005580;
+        border-radius: 4px;
+      }
+
+      /* Footer */
+      .footer {
+        background: #add8e6;
+        color: black;
+        padding: 20px 50px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 15px 0;
+        padding: 0;
+        flex-wrap: wrap;
+      }
+
+      .footer-links li a {
+        color: black;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .footer-social a img {
+        width: 25px;
+        margin: 0 8px;
+      }
+
+      .footer-content p {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        #paragliding .container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        #paragliding .text-box,
+        #paragliding .image-box {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- Paragliding Section -->
+      <section id="paragliding">
+        <h2>Paragliding in Pokhara: Adventure in the Sky</h2>
+
+        <div class="container">
+          <!-- Image with Caption -->
+          <div class="image-box">
+            <img
+              src="img/paragliding-in-nepal.webp"
+              alt="Paragliding in Pokhara"
+            />
+            <p>Paragliding over Pokhara Valley</p>
+          </div>
+
+          <!-- Text Content -->
+          <div class="text-box">
+            <p>
+              Pokhara, Nepal, is renowned as one of the world's best paragliding
+              destinations. Adventure enthusiasts soar above the stunning Phewa
+              Lake, Annapurna mountain range, and lush green valleys for
+              breathtaking views and unforgettable experiences.
+            </p>
+
+            <p>
+              Paragliding in Pokhara is suitable for beginners and experienced
+              flyers alike. Tandem flights with certified instructors allow
+              anyone to enjoy the thrill safely, making it a must-try activity
+              for tourists visiting the city.
+            </p>
+
+            <button id="paraglidingFactButton">Show Fun Fact</button>
+            <p id="paraglidingFunFact"></p>
+          </div>
         </div>
-        
-        <!-- Text Content -->
-        <div class="text-box">
-          <p>
-            Pokhara, Nepal, is renowned as one of the world's best paragliding destinations. 
-            Adventure enthusiasts soar above the stunning Phewa Lake, Annapurna mountain range, 
-            and lush green valleys for breathtaking views and unforgettable experiences.
-          </p>
-          
-          <p>
-            Paragliding in Pokhara is suitable for beginners and experienced flyers alike. 
-            Tandem flights with certified instructors allow anyone to enjoy the thrill safely, 
-            making it a must-try activity for tourists visiting the city.
-          </p>
+      </section>
+    </main>
 
-          <button id="paraglidingFactButton">Show Fun Fact</button>
-          <p id="paraglidingFunFact"></p>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="heritage-sites.html">Heritage Sites</a></li>
+          <li><a href="plan-trip.html">Plan Trip</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="#"><img src="img/twitter.png" alt="Twitter" /></a>
+          <a href="#"><img src="img/ins.png" alt="Instagram" /></a>
+          <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="destinations.html">Destinations</a></li>
-        <li><a href="heritage-sites.html">Heritage Sites</a></li>
-        <li><a href="plan-trip.html">Plan Trip</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="experiences.html">Experiences</a></li>
-      </ul>
-      <div class="footer-social">
-        <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
-        <a href="#"><img src="img/ins.png" alt="Instagram"></a>
-        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
-      </div>
-    </div>
-  </footer>
+    <script>
+      // Fun facts about Paragliding in Pokhara
+      const paraglidingFacts = [
+        "Pokhara is considered one of the top 10 paragliding destinations in the world.",
+        "Flights can last anywhere from 20 to 60 minutes depending on wind and route.",
+        "You can see the Annapurna and Dhaulagiri mountain ranges while paragliding.",
+        "Tandem flights are available for beginners with certified instructors.",
+        "Paragliding in Pokhara provides a bird's-eye view of the stunning Phewa Lake.",
+        "The launch site is usually from Sarangkot hill, 1,592 meters above sea level.",
+        "Paragliding is popular both in summer and winter seasons due to favorable winds.",
+      ];
 
-  <script>
-    // Fun facts about Paragliding in Pokhara
-    const paraglidingFacts = [
-      "Pokhara is considered one of the top 10 paragliding destinations in the world.",
-      "Flights can last anywhere from 20 to 60 minutes depending on wind and route.",
-      "You can see the Annapurna and Dhaulagiri mountain ranges while paragliding.",
-      "Tandem flights are available for beginners with certified instructors.",
-      "Paragliding in Pokhara provides a bird's-eye view of the stunning Phewa Lake.",
-      "The launch site is usually from Sarangkot hill, 1,592 meters above sea level.",
-      "Paragliding is popular both in summer and winter seasons due to favorable winds."
-    ];
+      const paraButton = document.getElementById("paraglidingFactButton");
+      const paraFactText = document.getElementById("paraglidingFunFact");
 
-    const paraButton = document.getElementById("paraglidingFactButton");
-    const paraFactText = document.getElementById("paraglidingFunFact");
-
-    paraButton.addEventListener("click", () => {
-      const randomFact = paraglidingFacts[Math.floor(Math.random() * paraglidingFacts.length)];
-      paraFactText.textContent = randomFact;
-    });
-  </script>
-
-</body>
+      paraButton.addEventListener("click", () => {
+        const randomFact =
+          paraglidingFacts[Math.floor(Math.random() * paraglidingFacts.length)];
+        paraFactText.textContent = randomFact;
+      });
+    </script>
+  </body>
 </html>

@@ -1,0 +1,39 @@
+[
+    {
+        "title": "Bisket Jatra Festival",
+        "description": "Traditional New Year celebration in Bhaktapur with chariot processions.",
+        "day": 14,
+        "month": 4,
+        "location": "Bhaktapur",
+        "category": "Festival"
+    },
+    {
+        "title": "Gaijatra",
+        "description": "A colorful festival honoring the departed with parades and performances in Kathmandu.",
+        "day": 30,
+        "month": 8,
+        "location": "Kathmandu",
+        "category": "Festival"
+    },
+    {
+        "title": "Dashain",
+        "description": "The biggest Hindu festival in Nepal, celebrated with family gatherings and blessings.",
+        "day": 10,
+        "month": 10,
+        "category": "Festival"
+    },
+    {
+        "title": "Holi",
+        "description": "Festival of colors celebrated across Nepal with vibrant powders and water.",
+        "day": 6,
+        "month": 3,
+        "category": "Festival"
+    },
+    {
+        "title": "Tihar",
+        "description": "Festival of lights honoring animals, siblings, and wealth with decorations and rituals.",
+        "day": 12,
+        "month": 11,
+        "category": "Festival"
+    }
+]

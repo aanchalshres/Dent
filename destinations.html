@@ -1,77 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Destinations - Heritage Portal</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- Navbar -->
     <header>
-        <nav class="navbar">
-            <div class="logo">Heritage Portal</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="destinations.html" class="active">Destinations</a></li>
-                <li><a href="heritage-sites.html">Heritage Sites</a></li>
-                <li><a href="plan-trip.html">Plan Trip</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
-            </ul>
-            <button class="plan-btn">Plan Your Journey</button>
-        </nav>
+      <nav class="navbar">
+        <div class="logo">
+          <a class="logo" href="/index.html">Heritage Portal</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html" class="active">Destinations</a></li>
+          <li><a href="heritage-sites.html">Heritage Sites</a></li>
+          <li><a href="plan-trip.html">Plan Trip</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+        </ul>
+        <button class="plan-btn">Plan Your Journey</button>
+      </nav>
     </header>
 
     <!-- Destinations Section -->
     <section class="section">
-        <h2 class="section-title">Top Destinations</h2>
+      <h2 class="section-title">Top Destinations</h2>
 
-        <!-- Search Bar -->
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search destinations..." onkeyup="filterDestinations()">
-        </div>
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search destinations..."
+          onkeyup="filterDestinations()"
+        />
+      </div>
 
-        <!-- Category Filters -->
-        <div class="category-filters">
-            <button class="filter-btn active" onclick="filterByCategory('all', event)">All</button>
-            <button class="filter-btn" onclick="filterByCategory('temple', event)">Temples</button>
-            <button class="filter-btn" onclick="filterByCategory('palace', event)">Palaces</button>
-            <button class="filter-btn" onclick="filterByCategory('nature', event)">Nature</button>
-            <button class="filter-btn" onclick="filterByCategory('museum', event)">Museums</button>
-        </div>
+      <!-- Category Filters -->
+      <div class="category-filters">
+        <button
+          class="filter-btn active"
+          onclick="filterByCategory('all', event)"
+        >
+          All
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('temple', event)">
+          Temples
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('palace', event)">
+          Palaces
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('nature', event)">
+          Nature
+        </button>
+        <button class="filter-btn" onclick="filterByCategory('museum', event)">
+          Museums
+        </button>
+      </div>
 
-        <!-- Destination Cards -->
-        <div class="card-container" id="destinationCards">
-            <a href="durbar.html" class="card fade-in" data-category="palace">
-                <img src="img/durbar-square-bhaktapur (1).jpg" alt="Bhaktapur Durbar Square">
-                <h3>Bhaktapur Durbar Square</h3>
-                <p>Explore ancient palaces and rich Newar culture.</p>
-            </a>
-            <a href="pashupatinath.html" class="card fade-in" data-category="temple">
-                <img src="img/round-2.jpg" alt="Pashupatinath Temple">
-                <h3>Pashupatinath Temple</h3>
-                <p>One of the most sacred Hindu temples in the world.</p>
-            </a>
-            <a href="lumbini.html" class="card fade-in" data-category="temple">
-                <img src="img/lumbini.jpg" alt="Lumbini">
-                <h3>Lumbini</h3>
-                <p>The birthplace of Lord Buddha, a UNESCO heritage site.</p>
-            </a>
-            <a href="chitwan.html" class="card fade-in" data-category="nature">
-                <img src="img/chitwan.jpeg" alt="Chitwan National Park">
-                <h3>Chitwan National Park</h3>
-                <p>Home to rhinos, tigers, and rich biodiversity.</p>
-            </a>
-            <a href="museum.html" class="card fade-in" data-category="museum">
-                <img src="img/museum.jpg" alt="National Museum of Nepal">
-                <h3>National Museum of Nepal</h3>
-                <p>A treasure trove of Nepal’s art, history, and culture.</p>
-            </a>
-        </div>
+      <!-- Destination Cards -->
+      <div class="card-container" id="destinationCards">
+        <a href="durbar.html" class="card fade-in" data-category="palace">
+          <img
+            src="img/durbar-square-bhaktapur (1).jpg"
+            alt="Bhaktapur Durbar Square"
+          />
+          <h3>Bhaktapur Durbar Square</h3>
+          <p>Explore ancient palaces and rich Newar culture.</p>
+        </a>
+        <a
+          href="pashupatinath.html"
+          class="card fade-in"
+          data-category="temple"
+        >
+          <img src="img/round-2.jpg" alt="Pashupatinath Temple" />
+          <h3>Pashupatinath Temple</h3>
+          <p>One of the most sacred Hindu temples in the world.</p>
+        </a>
+        <a href="lumbini.html" class="card fade-in" data-category="temple">
+          <img src="img/lumbini.jpg" alt="Lumbini" />
+          <h3>Lumbini</h3>
+          <p>The birthplace of Lord Buddha, a UNESCO heritage site.</p>
+        </a>
+        <a href="chitwan.html" class="card fade-in" data-category="nature">
+          <img src="img/chitwan.jpeg" alt="Chitwan National Park" />
+          <h3>Chitwan National Park</h3>
+          <p>Home to rhinos, tigers, and rich biodiversity.</p>
+        </a>
+        <a href="museum.html" class="card fade-in" data-category="museum">
+          <img src="img/museum.jpg" alt="National Museum of Nepal" />
+          <h3>National Museum of Nepal</h3>
+          <p>A treasure trove of Nepal’s art, history, and culture.</p>
+        </a>
+      </div>
     </section>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,28 @@
+[
+    {
+        "title": "Bhaktapur – The City of Devotees",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Bhaktapur_city.jpg",
+        "content": "Bhaktapur, located in the Kathmandu Valley of Nepal, is known as the 'City of Devotees'. Famous for its rich culture, exquisite temples, traditional arts, and pottery, Bhaktapur preserves centuries-old architecture and heritage.",
+        "funFacts": [
+            "Bhaktapur is famous for its pottery square, where traditional clay pots are still handmade.",
+            "The city celebrates the Bisket Jatra festival every year, attracting thousands of visitors.",
+            "Bhaktapur's traditional bread, called 'Juju Dhau', is known as the 'King of Yogurt'.",
+            "The city has preserved over 500 years of ancient Newari architecture and temples.",
+            "Bhaktapur was an independent kingdom until the 15th century."
+        ]
+    },
+    {
+        "title": "Lumbini: Birthplace of Lord Buddha",
+        "imageUrl": "img/lumbini.jpg",
+        "content": "Lumbini, located in the Rupandehi district of Nepal, is the birthplace of Siddhartha Gautama, who later became Lord Buddha. It is a UNESCO World Heritage Site and one of the most important pilgrimage destinations for Buddhists around the world. The sacred garden contains the Maya Devi Temple, monasteries from different countries, and various historical stupas. Pilgrims and tourists visit Lumbini to experience its serene atmosphere, meditation zones, and spiritual rituals.",
+        "funFacts": [
+            "Lumbini is the birthplace of Siddhartha Gautama, who became Lord Buddha.",
+            "The Maya Devi Temple marks the exact spot of Buddha's birth.",
+            "Lumbini is a UNESCO World Heritage Site recognized for its cultural and spiritual significance.",
+            "There are monasteries built by countries like Japan, China, and Thailand in the Lumbini complex.",
+            "The Ashokan Pillar in Lumbini dates back to 249 BCE and commemorates Buddha's birth.",
+            "Pilgrims from around the world visit Lumbini to meditate and perform rituals.",
+            "Lumbini means 'the lovely place' in Sanskrit."
+        ]
+    }
+]
