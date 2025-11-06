@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everest Base Camp - Heritage Portal</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-y: auto; /* Enable scrolling */
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Everest Section */
+    #everest {
+      padding: 40px;
+      background-color: #f0f8ff;
+    }
+
+    #everest h2 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 30px;
+    }
+
+    #everest .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Image box */
+    #everest .image-box {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    #everest .image-box img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #everest .image-box p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    /* Text content */
+    #everest .text-box {
+      flex: 2 1 400px;
+    }
+
+    #everest .text-box p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    #everestFactButton {
+      padding: 10px 20px;
+      background-color: #003366;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #everestFactButton:hover {
+      background-color: #0055aa;
+    }
+
+    #everestFunFact {
+      margin-top: 15px;
+      font-style: italic;
+      color: #333;
+      background-color: #e6f0fa;
+      padding: 10px;
+      border-left: 4px solid #003366;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #ADD8E6;
+      color: black;
+      padding: 20px 50px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links li a {
+      color: black;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-social a img {
+      width: 25px;
+      margin: 0 8px;
+    }
+
+    .footer-content p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      #everest .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #everest .text-box, 
+      #everest .image-box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Everest Base Camp Section -->
+    <section id="everest">
+      <h2>Everest Base Camp: Gateway to the World's Roof</h2>
+      
+      <div class="container">
+        <!-- Image with Caption -->
+        <div class="image-box">
+          <img src="img/everest.jpg" alt="Everest Base Camp">
+          <p>Everest Base Camp with Mount Everest in the Background</p>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="text-box">
+          <p>
+            The <strong>Everest Base Camp (EBC)</strong> is one of the most famous trekking destinations in the world, 
+            located in the <strong>Khumbu region</strong> of Nepal at an altitude of around 5,364 meters (17,598 ft). 
+            It serves as the starting point for mountaineers attempting to summit the world’s highest peak, 
+            <strong>Mount Everest (8,848.86 meters)</strong>.
+          </p>
+          
+          <p>
+            The trek to Everest Base Camp offers stunning views of the Himalayas, including peaks like 
+            <strong>Amadablam</strong>, <strong>Lhotse</strong>, and <strong>Nuptse</strong>. 
+            Along the trail, trekkers experience Sherpa culture, ancient monasteries, and breathtaking landscapes.
+          </p>
+
+          <button id="everestFactButton">Show Fun Fact</button>
+          <p id="everestFunFact"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+        <li><a href="plan-trip.html">Plan Trip</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="img/ins.png" alt="Instagram"></a>
+        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fun facts about Everest Base Camp
+    const everestFacts = [
+      "Everest Base Camp sits at an altitude of 5,364 meters on the south side in Nepal.",
+      "There are actually two base camps — one in Nepal (South Base Camp) and one in Tibet (North Base Camp).",
+      "The trek to Everest Base Camp typically takes about 12–14 days round trip from Lukla.",
+      "Every spring, hundreds of climbers set up camp at EBC to prepare for their summit attempt.",
+      "The Khumbu Icefall, near the base camp, is one of the most dangerous sections of the Everest climb.",
+      "Everest Base Camp is located within the Sagarmatha National Park, a UNESCO World Heritage Site.",
+      "Trekkers often acclimatize at Namche Bazaar, a bustling Sherpa town along the route.",
+      "Wi-Fi and mobile networks are available at several points on the Everest Base Camp trail!"
+    ];
+
+    const everestButton = document.getElementById("everestFactButton");
+    const everestFactText = document.getElementById("everestFunFact");
+
+    everestButton.addEventListener("click", () => {
+      const randomFact = everestFacts[Math.floor(Math.random() * everestFacts.length)];
+      everestFactText.textContent = randomFact;
+    });
+  </script>
+
+</body>
+</html>

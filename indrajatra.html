@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indra Jatra - Heritage Portal</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow-y: auto; /* enable scrolling */
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Indra Jatra Section */
+    #indra-jatra {
+      padding: 40px;
+      background-color: #fff5e6;
+    }
+
+    #indra-jatra h2 {
+      text-align: center;
+      color: #8b4500;
+      margin-bottom: 30px;
+    }
+
+    #indra-jatra .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Image box */
+    #indra-jatra .image-box {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    #indra-jatra .image-box img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #indra-jatra .image-box p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #8b4500;
+    }
+
+    /* Text content */
+    #indra-jatra .text-box {
+      flex: 2 1 400px;
+    }
+
+    #indra-jatra .text-box p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    #indraFactButton {
+      padding: 10px 20px;
+      background-color: #8b4500;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #indraFactButton:hover {
+      background-color: #a0522d;
+    }
+
+    #indraFunFact {
+      margin-top: 15px;
+      font-style: italic;
+      color: #333;
+      background-color: #fff8dc;
+      padding: 10px;
+      border-left: 4px solid #8b4500;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #ADD8E6;
+      color: black;
+      padding: 20px 50px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links li a {
+      color: black;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-social a img {
+      width: 25px;
+      margin: 0 8px;
+    }
+
+    .footer-content p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      #indra-jatra .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #indra-jatra .text-box, 
+      #indra-jatra .image-box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Indra Jatra Section -->
+    <section id="indra-jatra">
+      <h2>Indra Jatra: Festival of Kathmandu</h2>
+      
+      <div class="container">
+        <!-- Image with Caption -->
+        <div class="image-box">
+          <img src="img/indra-Jatra.jpg" alt="Indra Jatra Festival">
+          <p>Chariot Procession During Indra Jatra</p>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="text-box">
+          <p>
+            Indra Jatra is one of the most vibrant and important festivals celebrated in Kathmandu, Nepal. 
+            It honors Lord Indra, the god of rain and king of heaven, and showcases traditional dances, 
+            chariot processions, and cultural rituals. The festival usually takes place in September.
+          </p>
+          
+          <p>
+            The highlight of Indra Jatra is the procession of the chariots of Kumari, the living goddess, 
+            and other deities. Traditional dances such as Lakhe dance, masked dances, and bhairab performances 
+            attract locals and tourists alike, preserving the rich Newar cultural heritage.
+          </p>
+
+          <button id="indraFactButton">Show Fun Fact</button>
+          <p id="indraFunFact"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+        <li><a href="plan-trip.html">Plan Trip</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="img/ins.png" alt="Instagram"></a>
+        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fun facts about Indra Jatra
+    const indraFacts = [
+      "Indra Jatra celebrates Lord Indra, the god of rain and king of heaven.",
+      "The festival is famous for the Kumari Jatra, where the living goddess Kumari is paraded through the streets.",
+      "Lakhe dances and Bhairab performances are unique traditional dances performed during Indra Jatra.",
+      "Indra Jatra marks the end of the monsoon season in Nepal.",
+      "The festival is primarily celebrated by the Newar community of Kathmandu.",
+      "Colorful chariot processions of deities are a highlight of the festival.",
+      "Indra Jatra is over 7 days long, including various religious rituals and cultural shows."
+    ];
+
+    const indraButton = document.getElementById("indraFactButton");
+    const indraFactText = document.getElementById("indraFunFact");
+
+    indraButton.addEventListener("click", () => {
+      const randomFact = indraFacts[Math.floor(Math.random() * indraFacts.length)];
+      indraFactText.textContent = randomFact;
+    });
+  </script>
+
+</body>
+</html>

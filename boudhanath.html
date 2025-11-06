@@ -1,0 +1,127 @@
+<!-- Boudhanath Stupa Section -->
+<section id="boudhanath" style="padding: 40px; background-color: #eef7f9; font-family: Arial, sans-serif;">
+  <h2 style="text-align: center; color: #004080;">Boudhanath Stupa: A Symbol of Peace</h2>
+  
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: flex-start;">
+    
+    <!-- Image with Caption -->
+    <div style="flex: 1 1 300px; text-align: center;">
+      <img src="img/Bouddhanath+10+things+to+do.webp" 
+           style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      <p style="margin-top: 10px; font-weight: bold; color: #004080;">The Majestic Boudhanath Stupa</p>
+    </div>
+    
+    <!-- Text Content -->
+    <div style="flex: 2 1 400px;">
+      <p>
+        The <strong>Boudhanath Stupa</strong>, located in the northeastern outskirts of Kathmandu, 
+        is one of the largest spherical stupas in the world and a UNESCO World Heritage Site. 
+        It serves as a central hub of Tibetan Buddhism in Nepal and attracts pilgrims and tourists alike.
+      </p>
+      
+      <p>
+        The stupa’s massive white dome and all-seeing eyes of Buddha symbolize peace, unity, and awareness. 
+        Surrounding the stupa are prayer wheels, monasteries, and shops selling traditional Tibetan artifacts.
+      </p>
+
+      <button id="boudhaFactButton" style="padding: 10px 20px; background-color: #004080; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+        Show Fun Fact
+      </button>
+      
+      <p id="boudhaFunFact" style="margin-top: 15px; font-style: italic; color: #333;"></p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" style="position: fixed; bottom: 0; width: 100%;">
+  <div class="footer-content">
+    <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="heritage-sites.html">Heritage Sites</a></li>
+      <li><a href="plan-trip.html">Plan Trip</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="#"><img src="img/twitter.png" alt="Twitter" /></a>
+      <a href="#"><img src="img/ins.png" alt="Instagram" /></a>
+      <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* Enable scrolling */
+    font-family: Arial, sans-serif;
+  }
+
+  .footer {
+    background: #ADD8E6;
+    color: black;
+    padding: 20px 50px;
+    text-align: center;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .footer-links li a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .footer-social a img {
+    width: 25px;
+    margin: 0 8px;
+  }
+
+  .footer-content p {
+    font-size: 14px;
+  }
+
+  #boudhaFactButton {
+    transition: background-color 0.3s;
+  }
+
+  #boudhaFactButton:hover {
+    background-color: #0055aa;
+  }
+</style>
+
+<script>
+  // Fun facts about Boudhanath Stupa
+  const boudhaFacts = [
+    "Boudhanath Stupa is one of the largest spherical stupas in the world.",
+    "It was built in the 14th century after the Mughal invasions destroyed an older stupa.",
+    "The stupa’s design represents the five elements: earth, water, fire, air, and ether.",
+    "It is said that the stupa contains relics of Kassapa Buddha, one of Buddha’s previous incarnations.",
+    "Boudhanath is surrounded by over 50 Tibetan monasteries.",
+    "Thousands of butter lamps are lit daily around the stupa as an offering of light.",
+    "The all-seeing eyes of Buddha on the stupa symbolize wisdom and compassion.",
+    "Boudhanath is a major pilgrimage site for Tibetan Buddhists and Nepali monks."
+  ];
+
+  const boudhaButton = document.getElementById("boudhaFactButton");
+  const boudhaFactText = document.getElementById("boudhaFunFact");
+
+  boudhaButton.addEventListener("click", () => {
+    const randomFact = boudhaFacts[Math.floor(Math.random() * boudhaFacts.length)];
+    boudhaFactText.textContent = randomFact;
+  });
+</script>

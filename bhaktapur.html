@@ -1,0 +1,56 @@
+<!-- Bhaktapur Section -->
+<section id="bhaktapur" style="padding: 40px; background-color: #fdf5e6; font-family: Arial, sans-serif;">
+  <h2 style="text-align: center; color: #8b0000;">Bhaktapur – The City of Devotees</h2>
+  
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: flex-start;">
+    
+    <!-- Image -->
+    <div style="flex: 1 1 300px; text-align: center;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Bhaktapur_city.jpg" 
+           alt="Bhaktapur City" 
+           style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    </div>
+    
+    <!-- Text Content -->
+    <div style="flex: 2 1 400px;">
+      <p>
+        Bhaktapur, located in the Kathmandu Valley of Nepal, is known as the "City of Devotees". 
+        Famous for its rich culture, exquisite temples, traditional arts, and pottery, Bhaktapur 
+        preserves centuries-old architecture and heritage. It is also famous for its festivals, 
+        traditional Newari cuisine, and vibrant local markets.
+      </p>
+      
+      <p>
+        The city was a medieval kingdom and is home to landmarks such as the <strong>55-Window Palace</strong>, 
+        <strong>Patan Durbar Square</strong>, and the <strong>Nyatapola Temple</strong>, one of the tallest pagoda-style temples in Nepal.
+      </p>
+
+      <button id="factButton" style="padding: 10px 20px; background-color: #8b0000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+        Show Fun Fact
+      </button>
+      
+      <p id="funFact" style="margin-top: 15px; font-style: italic; color: #555;"></p>
+    </div>
+    
+  </div>
+</section>
+
+<script>
+  // Fun facts about Bhaktapur
+  const facts = [
+    "Bhaktapur is famous for its pottery square, where traditional clay pots are still handmade.",
+    "The city celebrates the Bisket Jatra festival every year, attracting thousands of visitors.",
+    "Bhaktapur's traditional bread, called 'Juju Dhau', is known as the 'King of Yogurt'.",
+    "The city has preserved over 500 years of ancient Newari architecture and temples.",
+    "Bhaktapur was an independent kingdom until the 15th century."
+  ];
+
+  const button = document.getElementById("factButton");
+  const factText = document.getElementById("funFact");
+
+  button.addEventListener("click", () => {
+    // Pick a random fact
+    const randomFact = facts[Math.floor(Math.random() * facts.length)];
+    factText.textContent = randomFact;
+  });
+</script>

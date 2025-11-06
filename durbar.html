@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhaktapur - Heritage Portal</title>
+  <style>
+    /* Ensure the body takes full height and uses flex */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Flex container to push footer to bottom if content is short */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Main content grows to fill available space */
+    main {
+      flex: 1;
+    }
+
+    /* Bhaktapur section */
+    #bhaktapur {
+      padding: 40px;
+      background-color: #fdf5e6;
+    }
+
+    #bhaktapur h2 {
+      text-align: center;
+      color: #8b0000;
+      margin-bottom: 30px;
+    }
+
+    #bhaktapur .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Image with caption */
+    #bhaktapur .image-box {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    #bhaktapur .image-box img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #bhaktapur .image-box p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #8b0000;
+    }
+
+    /* Text content */
+    #bhaktapur .text-box {
+      flex: 2 1 400px;
+    }
+
+    #bhaktapur .text-box p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    #factButton {
+      padding: 10px 20px;
+      background-color: #8b0000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #factButton:hover {
+      background-color: #a00000;
+    }
+
+    #funFact {
+      margin-top: 15px;
+      font-style: italic;
+      color: #555;
+      background-color: #fff8dc;
+      padding: 10px;
+      border-left: 4px solid #8b0000;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #ADD8E6;
+      color: black;
+      padding: 20px 50px;
+      text-align: center;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links li a {
+      color: black;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-social a img {
+      width: 25px;
+      margin: 0 8px;
+    }
+
+    .footer-content p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #bhaktapur .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #bhaktapur .text-box, 
+      #bhaktapur .image-box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Bhaktapur Section -->
+    <section id="bhaktapur">
+      <h2>Bhaktapur: The City of Devotees</h2>
+      
+      <div class="container">
+        <!-- Image with Caption -->
+        <div class="image-box">
+          <img src="img/durbar-square-bhaktapur (1).jpg" alt="Bhaktapur Durbar Square">
+          <p>Bhaktapur Durbar Square</p>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="text-box">
+          <p>
+            Bhaktapur, located in the Kathmandu Valley of Nepal, is known as the "City of Devotees". 
+            Famous for its rich culture, exquisite temples, traditional arts, and pottery, Bhaktapur 
+            preserves centuries-old architecture and heritage. It is also famous for its festivals, 
+            traditional Newari cuisine, and vibrant local markets.
+          </p>
+          
+          <p>
+            The city was a medieval kingdom and is home to landmarks such as the <strong>55-Window Palace</strong>, 
+            <strong>Patan Durbar Square</strong>, and the <strong>Nyatapola Temple</strong>, one of the tallest pagoda-style temples in Nepal.
+          </p>
+
+          <button id="factButton">Show Fun Fact</button>
+          <p id="funFact"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+        <li><a href="plan-trip.html">Plan Trip</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="img/ins.png" alt="Instagram"></a>
+        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fun facts about Bhaktapur
+    const facts = [
+      "Bhaktapur is famous for its pottery square, where traditional clay pots are still handmade.",
+      "The city celebrates the Bisket Jatra festival every year, attracting thousands of visitors.",
+      "Bhaktapur's traditional bread, called 'Juju Dhau', is known as the 'King of Yogurt'.",
+      "The city has preserved over 500 years of ancient Newari architecture and temples.",
+      "Bhaktapur was an independent kingdom until the 15th century.",
+      "Nyatapola Temple in Bhaktapur is one of the tallest pagoda-style temples in Nepal.",
+      "Bhaktapur Durbar Square is a UNESCO World Heritage Site.",
+      "The city is also famous for traditional mask-making and woodcrafts."
+    ];
+
+    const button = document.getElementById("factButton");
+    const factText = document.getElementById("funFact");
+
+    button.addEventListener("click", () => {
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+      factText.textContent = randomFact;
+    });
+  </script>
+
+</body>
+</html>

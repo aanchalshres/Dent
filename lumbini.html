@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumbini - Heritage Portal</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Lumbini Section */
+    #lumbini {
+      padding: 40px;
+      background-color: #fdf5e6;
+    }
+
+    #lumbini h2 {
+      text-align: center;
+      color: #8b0000;
+      margin-bottom: 30px;
+    }
+
+    #lumbini .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Image with caption */
+    #lumbini .image-box {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    #lumbini .image-box img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #lumbini .image-box p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #8b0000;
+    }
+
+    /* Text content */
+    #lumbini .text-box {
+      flex: 2 1 400px;
+    }
+
+    #lumbini .text-box p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    #factButton {
+      padding: 10px 20px;
+      background-color: #8b0000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #factButton:hover {
+      background-color: #a00000;
+    }
+
+    #funFact {
+      margin-top: 15px;
+      font-style: italic;
+      color: #555;
+      background-color: #fff8dc;
+      padding: 10px;
+      border-left: 4px solid #8b0000;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #ADD8E6;
+      color: black;
+      padding: 20px 50px;
+      text-align: center;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links li a {
+      color: black;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-social a img {
+      width: 25px;
+      margin: 0 8px;
+    }
+
+    .footer-content p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      #lumbini .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #lumbini .text-box, 
+      #lumbini .image-box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Lumbini Section -->
+    <section id="lumbini">
+      <h2>Lumbini: Birthplace of Lord Buddha</h2>
+      
+      <div class="container">
+        <!-- Image with Caption -->
+        <div class="image-box">
+          <img src="img/lumbini.jpg" alt="Lumbini">
+          <p>Lumbini Sacred Garden</p>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="text-box">
+          <p>
+            Lumbini, located in the Rupandehi district of Nepal, is the birthplace of Siddhartha Gautama, 
+            who later became Lord Buddha. It is a UNESCO World Heritage Site and one of the most important 
+            pilgrimage destinations for Buddhists around the world.
+          </p>
+          
+          <p>
+            The sacred garden contains the Maya Devi Temple, monasteries from different countries, and various 
+            historical stupas. Pilgrims and tourists visit Lumbini to experience its serene atmosphere, meditation zones, 
+            and spiritual rituals.
+          </p>
+
+          <button id="factButton">Show Fun Fact</button>
+          <p id="funFact"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+        <li><a href="plan-trip.html">Plan Trip</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="img/ins.png" alt="Instagram"></a>
+        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fun facts about Lumbini
+    const facts = [
+      "Lumbini is the birthplace of Siddhartha Gautama, who became Lord Buddha.",
+      "The Maya Devi Temple marks the exact spot of Buddha's birth.",
+      "Lumbini is a UNESCO World Heritage Site recognized for its cultural and spiritual significance.",
+      "There are monasteries built by countries like Japan, China, and Thailand in the Lumbini complex.",
+      "The Ashokan Pillar in Lumbini dates back to 249 BCE and commemorates Buddha's birth.",
+      "Pilgrims from around the world visit Lumbini to meditate and perform rituals.",
+      "Lumbini means 'the lovely place' in Sanskrit."
+    ];
+
+    const button = document.getElementById("factButton");
+    const factText = document.getElementById("funFact");
+
+    button.addEventListener("click", () => {
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+      factText.textContent = randomFact;
+    });
+  </script>
+
+</body>
+</html>

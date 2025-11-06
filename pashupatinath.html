@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pashupatinath Temple - Heritage Portal</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Pashupatinath Section */
+    #pashupatinath {
+      padding: 40px;
+      background-color: #fdf5e6;
+    }
+
+    #pashupatinath h2 {
+      text-align: center;
+      color: #8b0000;
+      margin-bottom: 30px;
+    }
+
+    #pashupatinath .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Image with caption */
+    #pashupatinath .image-box {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    #pashupatinath .image-box img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #pashupatinath .image-box p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #8b0000;
+    }
+
+    /* Text content */
+    #pashupatinath .text-box {
+      flex: 2 1 400px;
+    }
+
+    #pashupatinath .text-box p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    #factButton {
+      padding: 10px 20px;
+      background-color: #8b0000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #factButton:hover {
+      background-color: #a00000;
+    }
+
+    #funFact {
+      margin-top: 15px;
+      font-style: italic;
+      color: #555;
+      background-color: #fff8dc;
+      padding: 10px;
+      border-left: 4px solid #8b0000;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #ADD8E6;
+      color: black;
+      padding: 20px 50px;
+      text-align: center;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links li a {
+      color: black;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-social a img {
+      width: 25px;
+      margin: 0 8px;
+    }
+
+    .footer-content p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      #pashupatinath .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #pashupatinath .text-box, 
+      #pashupatinath .image-box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Pashupatinath Section -->
+    <section id="pashupatinath">
+      <h2>Pashupatinath Temple: The Sacred Hindu Shrine</h2>
+      
+      <div class="container">
+        <!-- Image with Caption -->
+        <div class="image-box">
+          <img src="img/Pashupatinath_Temple-2020.jpg" alt="Pashupatinath Temple">
+          <p>Pashupatinath Temple</p>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="text-box">
+          <p>
+            Pashupatinath Temple, located in Kathmandu, Nepal, is one of the most sacred Hindu temples dedicated to Lord Shiva. 
+            It is visited by thousands of pilgrims every year, especially during Maha Shivaratri. The temple complex is 
+            known for its beautiful pagoda-style architecture, riverbank ghats, and spiritual significance.
+          </p>
+          
+          <p>
+            The temple is a UNESCO World Heritage Site and holds numerous religious rituals, ceremonies, and festivals. 
+            Devotees from all over Nepal and India come to seek blessings, perform cremation rituals on the Bagmati River, 
+            and witness traditional Newari architecture.
+          </p>
+
+          <button id="factButton">Show Fun Fact</button>
+          <p id="funFact"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Heritage Portal. All Rights Reserved.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+        <li><a href="plan-trip.html">Plan Trip</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="img/ins.png" alt="Instagram"></a>
+        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fun facts about Pashupatinath Temple
+    const facts = [
+      "Pashupatinath Temple is dedicated to Lord Shiva and is one of the holiest Hindu temples in the world.",
+      "The temple complex covers over 2,400 square meters and is located along the Bagmati River.",
+      "Only Hindus are allowed inside the main temple, but visitors can view it from the riverbank.",
+      "Maha Shivaratri is the largest festival celebrated at Pashupatinath, attracting thousands of devotees.",
+      "The temple has pagoda-style architecture dating back to the 5th century.",
+      "Pashupatinath is a UNESCO World Heritage Site and a major pilgrimage destination.",
+      "Cremation rituals are performed on the ghats of the Bagmati River adjacent to the temple."
+    ];
+
+    const button = document.getElementById("factButton");
+    const factText = document.getElementById("funFact");
+
+    button.addEventListener("click", () => {
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+      factText.textContent = randomFact;
+    });
+  </script>
+
+</body>
+</html>
