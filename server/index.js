@@ -9,6 +9,7 @@ import productRoutes from "./routes/product.route.js";
 import utilRoutes from "./lib/multer.js";
 import paymentRoutes from "./routes/payment.route.js";
 import tripRoutes from "./routes/trip.route.js";
+import "./seed.js"
 
 const app = express();
 
