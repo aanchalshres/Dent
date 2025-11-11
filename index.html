@@ -219,6 +219,7 @@
           <li><a href="list-product.html">Products</a></li>
           <li><a href="profile.html">Profile</a></li>
           <li><a href="experiences.html">Experiences</a></li>
+          <li class="signup"><a href="signup.html">Signup</a></li>
         </ul>
         <div>
           <a href="plan-trip.html" class="plan-btn">Plan Your Journey</a>
@@ -363,5 +364,17 @@
         font-size: 14px; /* smaller copyright text */
       }
     </style>
+
+   <script>
+  const user = sessionStorage.getItem("user");
+  console.log(user);
+
+  if (user) {
+    const signUpElement = document.querySelector(".signup");
+    if (signUpElement) {
+      signUpElement.style.display = "none"; // ✅ hide the element
+    }
+  }
+</script>
   </body>
 </html>
