@@ -9,6 +9,7 @@ import productRoutes from "./routes/product.route.js";
 import utilRoutes from "./lib/multer.js";
 import paymentRoutes from "./routes/payment.route.js";
 import tripRoutes from "./routes/trip.route.js";
+import reviewRoutes from "./routes/review.route.js"
 import "./seed.js"
 
 const app = express();
@@ -37,6 +38,7 @@ app.use("/api/product", productRoutes);
 app.use("/api/util", utilRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/trip", tripRoutes);
+app.use("/api/review", reviewRoutes)
 
 app.use(express.static("uploads"));
 

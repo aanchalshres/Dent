@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Sneha R.",
+    "email": "sneha@example.com",
+    "rating": 4,
+    "message": "Patan Durbar Square has such intricate details on every temple. Loved the peaceful atmosphere!",
+    "submittedAt": "2025-11-13T13:10:00Z"
+  },
+  {
+    "name": "Rohan S.",
+    "email": "rohan@example.com",
+    "rating": 5,
+    "message": "The view from Swayambhunath was absolutely stunning! A perfect blend of spirituality and beauty.",
+    "submittedAt": "2025-11-13T14:05:00Z"
+  },
+  {
+    "name": "Priya T.",
+    "email": "priya@example.com",
+    "rating": 3,
+    "message": "Pashupatinath Temple was crowded but still a powerful experience. Worth visiting early morning.",
+    "submittedAt": "2025-11-13T15:20:00Z"
+  }
+]

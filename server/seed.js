@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { ProductSchema } from "./models/product.model.js";
 import { UserSchema } from "./models/user.model.js";
+import { ReviewSchema } from "./models/review.model.js";
 
 const seedProducts = async () => {
   try {
@@ -51,6 +52,29 @@ async function seedAdmin() {
   }
 }
 
-seedProducts();
-seedAdmin()
+async function seedReviews() {
+  try {
+    const existingReviews = await ReviewSchema.find({});
 
+    if(existingReviews.length > 0) {
+      console.log("✅ Reviews already exists. Skipping seeding");
+      return
+    }
+
+    const filePath = path.join(process.cwd(), "data", "reviews.json");
+    const data = fs.readFileSync(filePath, "utf-8");
+    const reviews = JSON.parse(data);
+
+    // Insert data into MongoDB
+    await ReviewSchema.insertMany(reviews);
+    console.log("✅ Reviews Seeded Successfully!");
+  
+  }catch(err){
+    console.error("❌ Error seeding users reviews:", error);
+    
+  }
+}
+
+seedProducts();
+seedAdmin();
+seedReviews();
