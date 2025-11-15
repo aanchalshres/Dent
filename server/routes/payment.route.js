@@ -1,18 +1,22 @@
 // src/routes/payment.js
 import express from "express";
 import { PaymentSchema } from "../models/payment.model.js";
+import { BookingSchema } from "../models/booking.model.js";
 
 const router = express.Router();
 
 // ✅ Success URL handler
 router.get("/success", async (req, res) => {
-  const { transaction_uuid, userId, total_amount, product_ids } = req.query;
+  const { transaction_uuid, userId, total_amount, product_ids, booking_id } = req.query;
+
+  console.log(booking_id)
 
   if (!transaction_uuid || !userId) {
     return res.status(400).send("Missing transaction UUID or userId");
   }
 
-  await PaymentSchema.insertOne({
+
+  const payment = await PaymentSchema.insertOne({
     userId,
     transaction_uuid,
     amount: total_amount,
@@ -21,7 +25,17 @@ router.get("/success", async (req, res) => {
     verifiedAt: new Date(),
   });
 
-  console.log("✅ Payment saved:", transaction_uuid);
+  const cleanId = booking_id.split("?")[0];
+  if(booking_id) {
+    await BookingSchema.findByIdAndUpdate(
+      cleanId,
+      {
+        status: "confirmed",
+        payment: payment._id,
+      },
+    );
+  }
+
   return res.send(`
       <h2>✅ Payment Successful!</h2>
       <p>Transaction ID: ${transaction_uuid}</p>

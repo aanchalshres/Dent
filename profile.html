@@ -69,9 +69,23 @@
         background-color: #d4edda !important;
         font-weight: bold;
       }
+
+      .btn-logout {
+        background: #8b0000;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn-logout:hover {
+        background: #a00000;
+      }
     </style>
   </head>
+
   <body>
+    <!-- NAVBAR -->
     <header>
       <nav class="navbar">
         <div class="logo">
@@ -80,28 +94,27 @@
         <ul class="nav-links">
           <li><a href="list-product.html">Product List</a></li>
           <li><a href="profile.html" class="active">My Profile</a></li>
+          <li><a href="booking.html" class="active">Bookings</a></li>
           <li><a href="index.html">Home</a></li>
         </ul>
       </nav>
     </header>
 
     <div class="container mt-5">
-      <!-- User Info -->
+      <!-- USER INFO -->
       <div class="profile-info" id="profileInfo">
         <h3>User Information</h3>
         <p><strong>Name:</strong> <span id="userName"></span></p>
         <p><strong>Email:</strong> <span id="userEmail"></span></p>
         <p><strong>User ID:</strong> <span id="userId"></span></p>
         <p><strong>Role:</strong> <span id="role"></span></p>
-        <button class=".btn" onclick="logout()">Logout</button>
+        <button class="btn-logout" onclick="logout()">Logout</button>
       </div>
 
-      <!-- Payments Table -->
+      <!-- PAYMENTS -->
       <h2 id="paymentTitle">My Payments</h2>
-      <table
-        class="table table-bordered table-hover bg-white"
-        id="paymentTable"
-      >
+
+      <table class="table table-bordered table-hover bg-white" id="paymentTable">
         <thead class="table-warning">
           <tr id="paymentHeader">
             <th>Transaction ID</th>
@@ -111,14 +124,16 @@
             <th>Date</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Payments will be injected here -->
-        </tbody>
+        <tbody></tbody>
       </table>
 
-      <!-- Reviews Section -->
+      <!-- REVIEWS -->
       <h2 id="review-title" class="mt-5">User Reviews</h2>
-      <table id="review-table" class="table table-bordered table-hover bg-white" id="reviewTable">
+
+      <table
+        id="reviewTable"
+        class="table table-bordered table-hover bg-white"
+      >
         <thead class="table-info">
           <tr>
             <th>Name</th>
@@ -128,51 +143,51 @@
             <th>Date</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- User reviews will be injected here -->
-        </tbody>
+        <tbody></tbody>
       </table>
-
     </div>
 
     <script>
+      // GET USER SESSION
       const user = JSON.parse(sessionStorage.getItem("user"));
-
 
       if (!user) {
         alert("Please login first!");
         window.location.href = "login.html";
       }
 
+      // LOGOUT FUNCTION
       function logout() {
         sessionStorage.removeItem("user");
-        alert("Logout Successful")
-        window.location.href = "index.html"        
+        alert("Logout Successful");
+        window.location.href = "index.html";
       }
 
-
-      // Display user info
+      // DISPLAY USER INFO
       document.getElementById("userName").textContent = user.name || "N/A";
       document.getElementById("userEmail").textContent = user.email || "N/A";
       document.getElementById("userId").textContent = user._id || "N/A";
       document.getElementById("role").textContent = user.role || "N/A";
 
-      // Role-based setup
+      // API URL FOR PAYMENTS
       const API_URL =
         user.role === "admin"
           ? "http://localhost:3000/api/payment/all"
           : `http://localhost:3000/api/payment/user/${user._id}`;
 
-      // Change heading for admin
+      // ADMIN PAYMENT HEADER UPDATE
       if (user.role === "admin") {
         document.getElementById("paymentTitle").textContent =
           "All Transactions (Admin View)";
+
         const headerRow = document.getElementById("paymentHeader");
         const newHeader = document.createElement("th");
         newHeader.textContent = "User Email";
+
         headerRow.insertBefore(newHeader, headerRow.firstChild);
       }
 
+      // FETCH PAYMENTS
       async function fetchPayments() {
         try {
           const response = await fetch(API_URL);
@@ -187,6 +202,7 @@
         }
       }
 
+      // DISPLAY PAYMENTS IN TABLE
       function displayPayments(payments) {
         const tbody = document.querySelector("#paymentTable tbody");
         tbody.innerHTML = "";
@@ -203,7 +219,6 @@
           const totalAmount = payment.totalAmount || payment.amount;
           totalRevenue += Number(totalAmount);
 
-          // For admin: show which user made the payment
           if (user.role === "admin") {
             tr.innerHTML = `
               <td>${payment.user?.email || "N/A"}</td>
@@ -226,7 +241,6 @@
           tbody.appendChild(tr);
         });
 
-        // If admin, show total accumulated revenue
         if (user.role === "admin") {
           const totalRow = document.createElement("tr");
           totalRow.innerHTML = `
@@ -244,13 +258,17 @@
 
       fetchPayments();
 
+      // -------------------------
+      //   REVIEWS SECTION
+      // -------------------------
+
       async function fetchReviews() {
         try {
           const response = await fetch("http://localhost:3000/api/review");
           if (!response.ok) throw new Error("Failed to fetch reviews");
-        
-          const reviews = await response.json();
-          displayReviews(reviews);
+
+          const result = await response.json();
+          displayReviews(result.reviews); // Corrected here
         } catch (err) {
           console.error(err);
           document.querySelector("#reviewTable tbody").innerHTML =
@@ -261,13 +279,14 @@
       function displayReviews(reviews) {
         const tbody = document.querySelector("#reviewTable tbody");
         tbody.innerHTML = "";
-      
-        if (reviews.length === 0) {
-          tbody.innerHTML = "<tr><td colspan='5'>No Reviews Found</td></tr>";
+
+        if (!reviews || reviews.length === 0) {
+          tbody.innerHTML =
+            "<tr><td colspan='5'>No Reviews Found</td></tr>";
           return;
         }
-        
-        reviews?.reviews?.forEach((review) => {
+
+        reviews.forEach((review) => {
           const tr = document.createElement("tr");
 
           tr.innerHTML = `
@@ -277,17 +296,17 @@
             <td>${review.message}</td>
             <td>${new Date(review.submittedAt).toLocaleString()}</td>
           `;
-        
+
           tbody.appendChild(tr);
         });
       }
 
-      // Run reviews fetch
-      if(user.role == "admin") {
+      // Only Admin Sees Reviews
+      if (user.role == "admin") {
         fetchReviews();
       } else {
-        document.getElementById("review-title").style.opacity = 0;
-        document.getElementById("review-table").style.opacity = 0;
+        document.getElementById("review-title").style.display = "none";
+        document.getElementById("reviewTable").style.display = "none";
       }
     </script>
   </body>

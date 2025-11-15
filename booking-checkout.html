@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Checkout</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f8f9fa;
+        padding: 2rem;
+        text-align: center;
+      }
+      #userInfo {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        display: inline-block;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      button {
+        background: #1ba548;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      button:hover {
+        background: #178a3d;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Booking Checkout</h1>
+    <div id="userInfo"></div>
+    <div id="action"></div>
+
+    <script>
+
+    const bookingId = sessionStorage.getItem("paymentBookingId");
+    const amount = Number(sessionStorage.getItem("paymentAmount"));
+      // Load user info from sessionStorage
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      const cart =
+        JSON.parse(sessionStorage.getItem(`cart_${user?._id}`)) || [];
+
+      const userInfoDiv = document.getElementById("userInfo");
+      const actionDiv = document.getElementById("action");
+
+      if (!user) {
+        // User not logged in
+        userInfoDiv.innerHTML = `<h3>Please login to continue checkout.</h3>`;
+        actionDiv.innerHTML = `<a href="/login.html">Go to Login</a>`;
+      } else {
+        console.log(amount, bookingId)
+        // Calculate total amount from cart
+        const totalAmount = amount ? amount : cart.reduce(
+          (sum, item) => sum + item.price * (item.quantity || 1),
+          0
+        );
+
+        // Show user info
+        userInfoDiv.innerHTML = `
+          <h3>User Information</h3>
+          <p><strong>Name:</strong> ${user.name}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Total Amount:</strong> रु${totalAmount}</p>
+        `;
+
+        // Add pay button
+        actionDiv.innerHTML = `<button onclick="pay(${totalAmount}, '${user._id}')">Pay with eSewa</button>`;
+      }
+
+      function generateEsewaSignature(secretKey, message) {
+        const hash = CryptoJS.HmacSHA256(message, secretKey);
+        return CryptoJS.enc.Base64.stringify(hash);
+      }
+
+      function pay(amount, userId) {
+        const totalAmount = amount + 10; // e.g. include tax
+        const taxAmount = 10;
+        const transaction_uuid = `${Date.now()}-${userId}`;
+        const product_code = "EPAYTEST";
+        const secretKey = "8gBm/:&EnhH.1/q";
+
+        // Message format must match signed_field_names
+        const message = `total_amount=${totalAmount},transaction_uuid=${transaction_uuid},product_code=${product_code}`;
+        const signature = generateEsewaSignature(secretKey, message);
+        const productIds = cart.map((item) => item._id).join(",");
+
+        const form = document.createElement("form");
+        form.method = "POST";
+        form.action = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
+
+        form.innerHTML = `
+          <input type="hidden" name="amount" value="${amount}">
+          <input type="hidden" name="tax_amount" value="${taxAmount}">
+          <input type="hidden" name="total_amount" value="${totalAmount}">
+          <input type="hidden" name="transaction_uuid" value="${transaction_uuid}">
+          <input type="hidden" name="product_code" value="${product_code}">
+          <input type="hidden" name="product_service_charge" value="0">
+          <input type="hidden" name="product_delivery_charge" value="0">
+          <input type="hidden" name="success_url" value="http://localhost:3000/api/payment/success?transaction_uuid=${transaction_uuid}&userId=${userId}&total_amount=${totalAmount}&product_ids=${productIds}&booking_id=${bookingId}">
+          <input type="hidden" name="failure_url" value="http://localhost:5000/api/payment/failure">
+          <input type="hidden" name="signed_field_names" value="total_amount,transaction_uuid,product_code">
+          <input type="hidden" name="signature" value="${signature}">
+        `;
+
+        document.body.appendChild(form);
+        form.submit();
+      }
+    </script>
+  </body>
+</html>

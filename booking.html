@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Bookings</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: Arial;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 40px;
+      background-color: #8b0000;
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-cancel {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-cancel:hover {
+      background: #bb2d3b;
+    }
+
+    .btn-complete {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-complete:hover {
+      background: #218838;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html">Heritage Portal</a>
+
+      <div>
+        <a href="profile.html" class="me-4">My Profile</a>
+        <a href="booking.html">My Bookings</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-4">
+    <h2 id="title">My Bookings</h2>
+
+    <table class="table table-bordered table-hover bg-white" id="bookingTable">
+      <thead class="table-primary">
+        <tr id="bookingHeader">
+          <th>Package</th>
+          <th>Total Price</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+  </div>
+
+  <script>
+    async function checkoutBooking(id, amount) {
+      // Redirect user to your payment page
+      sessionStorage.setItem("paymentBookingId", id);
+      sessionStorage.setItem("paymentAmount", amount);
+    
+      window.location.href = "booking-checkout.html"; // your payment page
+    }
+
+
+    // Get logged in user
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    if (!user) {
+      alert("Please login first!");
+      window.location.href = "login.html";
+    }
+
+    // API URL
+    const API_URL =
+      user.role === "admin"
+        ? "http://localhost:3000/api/package/bookings"
+        : "http://localhost:3000/api/package/my-bookings";
+
+    // ADMIN HEADER UPDATE
+    if (user.role === "admin") {
+      document.getElementById("title").textContent = "All Bookings (Admin View)";
+
+      const adminHeader = document.getElementById("bookingHeader");
+      const th = document.createElement("th");
+      th.textContent = "User Email";
+      adminHeader.insertBefore(th, adminHeader.firstChild);
+    }
+
+    async function fetchBookings() {
+      try {
+        const res = await fetch(API_URL, {
+          headers: { "x-user-id": user._id }   // If authentication needed
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch bookings");
+
+        const bookings = await res.json();
+        displayBookings(bookings);
+      } catch (err) {
+        console.error(err);
+        document.querySelector("#bookingTable tbody").innerHTML =
+          "<tr><td colspan='6'>Failed to load bookings</td></tr>";
+      }
+    }
+
+    function displayBookings(bookings) {
+      const tbody = document.querySelector("#bookingTable tbody");
+      tbody.innerHTML = "";
+
+      if (!bookings || bookings.length === 0) {
+        tbody.innerHTML = "<tr><td colspan='6'>No Bookings Found</td></tr>";
+        return;
+      }
+
+      bookings.forEach((b) => {
+        const tr = document.createElement("tr");
+
+        let actionBtns = "";
+
+        // USER CAN CANCEL
+        if (user.role !== "admin" && b.status === "pending") {
+          actionBtns = `
+            <button class="btn-cancel" onclick="cancelBooking('${b._id}')">Cancel</button>
+            <button class="btn-checkout" onclick="checkoutBooking('${b._id}', ${b.totalPrice})">Checkout</button>
+          `;
+        }
+
+        // ADMIN CAN COMPLETE
+        if (user.role === "admin" && b.status !== "confirmed") {
+          actionBtns = `
+            <button class="btn-complete" onclick="completeBooking('${b._id}')">Confirm</button>
+          `;
+        }
+
+        let adminEmailCell = user.role === "admin"
+          ? `<td>${b.user?.email || "N/A"}</td>`
+          : "";
+
+        tr.innerHTML = `
+          ${adminEmailCell}
+          <td>${b.package?.title || "N/A"}</td>
+          <td>₹${b.totalPrice}</td>
+          <td>${b.status}</td>
+          <td>${new Date(b.createdAt).toLocaleString()}</td>
+          <td>${actionBtns}</td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function cancelBooking(id) {
+      if (!confirm("Are you sure you want to cancel this booking?")) return;
+
+      const res = await fetch(`http://localhost:3000/api/booking/cancel/${id}`, {
+        method: "DELETE",
+        headers: { "x-user-id": user._id }
+      });
+
+      const data = await res.json();
+      alert(data.message);
+      fetchBookings();
+    }
+
+    async function completeBooking(id) {
+      if (!confirm("Mark booking as completed?")) return;
+
+      const res = await fetch(`http://localhost:3000/api/package/booking/complete/${id}`, {
+        method: "PATCH"
+      });
+
+      const data = await res.json();
+      alert(data.message);
+      fetchBookings();
+    }
+
+    fetchBookings();
+  </script>
+
+</body>
+</html>
