@@ -276,10 +276,13 @@
           return;
         }
 
+
         products.forEach((product) => {
+          const url = product.image.startsWith("http") ? product.image : `http://localhost:300/${product.image}`
+
           const tr = document.createElement("tr");
           tr.innerHTML = `
-                <td><img src="http://localhost:3000/${product.image}" alt="${
+                <td><img src="${url}" alt="${
             product.name
           }"></td>
                 <td>${product.name}</td>
@@ -316,10 +319,13 @@
           return;
         }
 
+
         products.forEach((product) => {
+          const url = product.image.startsWith("http") ? product.image : `http://localhost:300/${product.image}`         
+
           const tr = document.createElement("tr");
           tr.innerHTML = `
-              <td><img src="http://localhost:3000/${product.image}" alt="${
+              <td><img src="${url}" alt="${
             product.name
           }"></td>
               <td>${product.name}</td>

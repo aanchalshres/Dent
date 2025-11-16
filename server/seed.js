@@ -21,7 +21,6 @@ const seedProducts = async () => {
     // Insert data into MongoDB
     await ProductSchema.insertMany(products);
     console.log("✅ Data Seeded Successfully!");
-    process.exit();
   } catch (error) {
     console.error("❌ Error Seeding Data:", error);
     process.exit(1);
