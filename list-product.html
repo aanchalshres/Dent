@@ -234,7 +234,7 @@
         document.querySelector(".cart-container").style.opacity = 0;
       }
 
-      const API_URL = "http://localhost:3000/api/product/getall"; // Get all products
+      const API_URL = "https://dent-vy52.onrender.com/api/product/getall"; // Get all products
       let products = [];
       let cart = [];
 
@@ -278,7 +278,7 @@
 
 
         products.forEach((product) => {
-          const url = product.image.startsWith("http") ? product.image : `http://localhost:300/${product.image}`
+          const url = product.image.startsWith("http") ? product.image : `https://dent-vy52.onrender.com/${product.image}`
 
           const tr = document.createElement("tr");
           tr.innerHTML = `
@@ -321,7 +321,7 @@
 
 
         products.forEach((product) => {
-          const url = product.image.startsWith("http") ? product.image : `http://localhost:300/${product.image}`         
+          const url = product.image.startsWith("http") ? product.image : `https://dent-vy52.onrender.com/${product.image}`         
 
           const tr = document.createElement("tr");
           tr.innerHTML = `
@@ -394,7 +394,7 @@
           div.className = "cart-item";
           div.innerHTML = `
                 <div class="d-flex align-items-center">
-                  <img src="http://localhost:3000/${item.image}" alt="${item.name}">
+                  <img src="https://dent-vy52.onrender.com/${item.image}" alt="${item.name}">
                   <div>
                     <h5 style="margin:0;">${item.name}</h5>
                     <p style="margin:0;">रु${item.price} x ${item.quantity}</p>
@@ -473,7 +473,7 @@
 
           try {
             const response = await fetch(
-              `http://localhost:3000/api/product/update/${id}`,
+              `https://dent-vy52.onrender.com/api/product/update/${id}`,
               {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },

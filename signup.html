@@ -93,7 +93,7 @@
 
           try {
             const res = await fetch(
-              "http://localhost:3000/api/util/uploadfile",
+              "https://dent-vy52.onrender.com/api/util/uploadfile",
               {
                 method: "POST",
                 body: fd,
@@ -157,7 +157,7 @@
         console.log("Payload:", payload);
 
         try {
-          const res = await fetch("http://localhost:3000/api/user/add", {
+          const res = await fetch("https://dent-vy52.onrender.com/api/user/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),

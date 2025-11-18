@@ -109,8 +109,8 @@
     // API URL
     const API_URL =
       user.role === "admin"
-        ? "http://localhost:3000/api/package/bookings"
-        : "http://localhost:3000/api/package/my-bookings";
+        ? "https://dent-vy52.onrender.com/api/package/bookings"
+        : "https://dent-vy52.onrender.com/api/package/my-bookings";
 
     // ADMIN HEADER UPDATE
     if (user.role === "admin") {
@@ -188,7 +188,7 @@
     async function cancelBooking(id) {
       if (!confirm("Are you sure you want to cancel this booking?")) return;
 
-      const res = await fetch(`http://localhost:3000/api/booking/cancel/${id}`, {
+      const res = await fetch(`https://dent-vy52.onrender.com/api/booking/cancel/${id}`, {
         method: "DELETE",
         headers: { "x-user-id": user._id }
       });
@@ -201,7 +201,7 @@
     async function completeBooking(id) {
       if (!confirm("Mark booking as completed?")) return;
 
-      const res = await fetch(`http://localhost:3000/api/package/booking/complete/${id}`, {
+      const res = await fetch(`https://dent-vy52.onrender.com/api/package/booking/complete/${id}`, {
         method: "PATCH"
       });
 

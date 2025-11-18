@@ -267,14 +267,14 @@
 
       async function loadTrips() {
         const resUser = await fetch(
-          `http://localhost:3000/api/trip/user/${user._id}`
+          `https://dent-vy52.onrender.com/api/trip/user/${user._id}`
         );
         const userTrips = await resUser.json();
         renderUserTrips(userTrips);
         renderBookings();
 
         if (user.role === "admin") {
-          const resAll = await fetch("http://localhost:3000/api/trip/all");
+          const resAll = await fetch("https://dent-vy52.onrender.com/api/trip/all");
           renderAdminTrips(await resAll.json());
         }
       }
@@ -388,7 +388,7 @@
           };
           console.log(trip);
 
-          const res = await fetch("http://localhost:3000/api/trip/add", {
+          const res = await fetch("https://dent-vy52.onrender.com/api/trip/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(trip),
@@ -405,7 +405,7 @@
       // ---------------- PACKAGES ----------------
 
       async function loadPackages() {
-        const res = await fetch("http://localhost:3000/api/package/all");
+        const res = await fetch("https://dent-vy52.onrender.com/api/package/all");
         const data = await res.json();
         renderPackages(data);
       }
@@ -438,7 +438,7 @@
       }
 
       window.bookPackage = async (id) => {
-        const res = await fetch("http://localhost:3000/api/package/book", {
+        const res = await fetch("https://dent-vy52.onrender.com/api/package/book", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId: user._id, packageId: id }),
@@ -450,7 +450,7 @@
 
       // Load Trips into Package Modal
       async function loadTripsForPackage() {
-        const res = await fetch("http://localhost:3000/api/trip/all");
+        const res = await fetch("https://dent-vy52.onrender.com/api/trip/all");
         const trips = await res.json();
 
         const container = document.getElementById("tripSelectList");
@@ -506,7 +506,7 @@
             trips: selectedTrips,
           };
 
-          const res = await fetch("http://localhost:3000/api/package/add", {
+          const res = await fetch("https://dent-vy52.onrender.com/api/package/add", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

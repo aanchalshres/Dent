@@ -599,7 +599,7 @@
   // ✅ Fetch reviews from API
   async function fetchReviews() {
     try {
-      const res = await fetch("http://localhost:3000/api/review");
+      const res = await fetch("https://dent-vy52.onrender.com/api/review");
       const data = await res.json();
 
       reviewContainer.innerHTML = ""; // clear old content
@@ -633,7 +633,7 @@
     if (!name || !email || !rating || !message) return alert("Please fill all fields!");
 
     try {
-      const res = await fetch("http://localhost:3000/api/review/add", {
+      const res = await fetch("https://dent-vy52.onrender.com/api/review/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
